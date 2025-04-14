@@ -1,0 +1,13 @@
+.console {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.consoleBody{
+  padding: 10px
+}
