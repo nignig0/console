@@ -24,7 +24,12 @@ commands.set("npm install siri", {
     DOWNLOADING IMPRESSIVE BACKEND SKILLS: [####################]\n
     DOWNLOADING DAVIDO STANNING: [####################]\n
     DOWNLOADING CHILL, COOL PERSONALITY: [####################]\n
-    DOWNLOADING IMPRESSIVE MOBILE DEV SKILLS: [####################]\n   `
+    DOWNLOADING IMPRESSIVE MOBILE DEV SKILLS: [####################]\n
+    DOWNLOADING A LOVE FOR DUBAI: [####################]\n
+    DOWNLOADING A LOVE FOR ENTREPRENEURSHIP: [####################]\n
+    DONE\n
+    
+    `
 })
 
 commands.set("help", {
