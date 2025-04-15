@@ -7,6 +7,18 @@ export interface StateChange {
 export const commands: Map<string, StateChange> = new Map();
 commands.set("tani", {
     text: `
+    Of course you know me. Tani. The T man.\n
+    Tangent of i.e. tan(i)\n
+    Yes... I'm a nerd.\n
+    But I also love writing... code... but also poems and short stories\n
+    Been wanting to have a blog but too damn tired for that.\n
+    I love exploring new things... this was something new and kinda wacky.\n
+    Reach out to me if you want a command for you!
+    `
+});
+
+commands.set("tani -f", {
+    text: `
     Name: Tani\n
     DOB: 13th August 2002\n
     Technologies: Python, Java, Typescript, Dart, C++\n
