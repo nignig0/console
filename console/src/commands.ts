@@ -31,7 +31,7 @@ commands.set("npm install siri", {
     backgroundColor: '#eda1c5',
     textColor: '#ffffff',
     text: `
-    INSTALLING SIRI.....\n\n
+    INSTALLING SIRI... THE ONLY DEPENDENCY YOU'D EVER NEED\n\n
     DOWNLOADING A LOVE FOR THE COLOR PINK THAT CAME FROM NOWHERE: [####################]\n
     DOWNLOADING IMPRESSIVE BACKEND SKILLS: [####################]\n
     DOWNLOADING DAVIDO STANNING: [####################]\n
@@ -39,6 +39,26 @@ commands.set("npm install siri", {
     DOWNLOADING IMPRESSIVE MOBILE DEV SKILLS: [####################]\n
     DOWNLOADING A LOVE FOR DUBAI: [####################]\n
     DOWNLOADING A LOVE FOR ENTREPRENEURSHIP: [####################]\n
+    DOWNLOADING A LOVE FOR CHESS AND A 2500 ELO RATING: [####################]\n
+
+    DONE
+    `
+})
+
+commands.set("npm uninstall siri", {
+    backgroundColor: '#000000',
+    textColor: '#ffffff',
+    text: `
+    UNINSTALLING SIRI... DAMN... YOUR LOSSS I GUESS\n\n
+    REMOVING A LOVE FOR THE COLOR PINK THAT CAME FROM NOWHERE: [####################]\n
+    REMOVING IMPRESSIVE BACKEND SKILLS: [####################]\n
+    REMOVING DAVIDO STANNING: [####################]\n
+    REMOVING CHILL, COOL PERSONALITY: [####################]\n
+    REMOVING IMPRESSIVE MOBILE DEV SKILLS: [####################]\n
+    REMOVING A LOVE FOR DUBAI: [####################]\n
+    REMOVING A LOVE FOR ENTREPRENEURSHIP: [####################]\n
+    REMOVING A LOVE FOR CHESS AND A 2500 ELO RATING: [####################]\n
+
     DONE
     `
 })
