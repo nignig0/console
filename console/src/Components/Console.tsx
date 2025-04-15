@@ -19,18 +19,18 @@ export function Console(){
 
     useEffect(()=>{
       var index = 0;
-      setIntroducing(introducing => true);
+      setIntroducing(_introducing => true);
       const interval = setInterval(()=>{
         if(index == introText.length){
           clearInterval(interval);
-          setIntroducing(introducing=> false);
-          setIntroductionText(t=> '');
-          setHistory(history => [introText])
+          setIntroducing(_introducing=> false);
+          setIntroductionText(_t=> '');
+          setHistory(_history => [introText])
           return;
         }
 
         const text = introText.slice(0, index);
-        setIntroductionText(t => text);
+        setIntroductionText(_t => text);
         index++;
       }, 50);
     }, [])
@@ -43,7 +43,7 @@ export function Console(){
         if(e.key === 'Enter' && !executing){
             setHistory(history => [...history, `> ${input}`]);
             getResponse(input);
-            setInput(input => '');
+            setInput(_input => '');
         }
     }
 
@@ -57,23 +57,23 @@ export function Console(){
 
 
     const changeStateBasedOnResponse = (change: StateChange)=>{
-      if(change.backgroundColor) setBackgroundColor(bColor=> change.backgroundColor!)
-      if(change.textColor) setTextColor(tColor => change.textColor!)
+      if(change.backgroundColor) setBackgroundColor(_bColor=> change.backgroundColor!)
+      if(change.textColor) setTextColor(_tColor => change.textColor!)
 
-      setExecuting(executing => true);
+      setExecuting(_executing => true);
       var index = 0;
       const interval = setInterval(()=>{
         if (index == change.text.length){
           clearInterval(interval);
           
           setHistory(history => [...history, change.text])
-          setExecutingText(text=> '')
-          setExecuting(executing => false);
+          setExecutingText(_text=> '')
+          setExecuting(_executing => false);
           return;
         } 
         
         const slice = change.text.slice(0,index);
-        setExecutingText( text=> slice)
+        setExecutingText( _text=> slice)
         index++;
       }, 50);
 
