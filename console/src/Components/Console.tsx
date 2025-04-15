@@ -1,30 +1,102 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../App.css'
+import { commands, introText, StateChange } from '../commands';
 
 
 
 export function Console(){
     const [history, setHistory] = useState<string[]>([]);
     const [backgroundColor, setBackgroundColor] = useState('black');
+    const [textColor, setTextColor] = useState('white');
     const [input, setInput] = useState('');
     const [executing, setExecuting] = useState(false);
+    const [executingText, setExecutingText] = useState('');
+    const consoleRef = useRef<HTMLDivElement>(null);
+
+    const [introducing, setIntroducing] = useState(false);
+    const [introductionText, setIntroductionText] = useState('');
+
+
+    useEffect(()=>{
+      var index = 0;
+      setIntroducing(introducing => true);
+      const interval = setInterval(()=>{
+        if(index == introText.length){
+          clearInterval(interval);
+          setIntroducing(introducing=> false);
+          setIntroductionText(t=> '');
+          setHistory(history => [introText])
+          return;
+        }
+
+        const text = introText.slice(0, index);
+        setIntroductionText(t => text);
+        index++;
+      }, 50);
+    }, [])
+
+    useEffect(()=>{
+      if(consoleRef.current) consoleRef.current.scrollTo(0, consoleRef.current.scrollHeight);
+    }, [history, executingText]);
 
     const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.key === 'Enter' && !executing){
-            setHistory([...history, `>${input}`]);
-            setInput('');
+            setHistory(history => [...history, `> ${input}`]);
+            getResponse(input);
+            setInput(input => '');
         }
+    }
+
+    const getResponse = (command: string)=>{
+      if(!commands.has(command.trim())){
+        setHistory(history => [...history, "This command does not exist!"])
+      }else{
+        changeStateBasedOnResponse(commands.get(command)!);
+      }
+    }
+
+
+    const changeStateBasedOnResponse = (change: StateChange)=>{
+      if(change.backgroundColor) setBackgroundColor(bColor=> change.backgroundColor!)
+      if(change.textColor) setTextColor(tColor => change.textColor!)
+
+      setExecuting(executing => true);
+      var index = 0;
+      const interval = setInterval(()=>{
+        if (index == change.text.length){
+          clearInterval(interval);
+          
+          setHistory(history => [...history, change.text])
+          setExecutingText(text=> '')
+          setExecuting(executing => false);
+          return;
+        } 
+        
+        const slice = change.text.slice(0,index);
+        setExecutingText( text=> slice)
+        index++;
+      }, 50);
+
+      
+      
     }
     return (
         <>
+        {}
         <div className="console" style={{
-            backgroundColor: 'black'
-        }}>
+            backgroundColor: backgroundColor
+        }} ref={consoleRef}>
+
+          {introductionText && <div style={{
+            color: textColor,
+            fontSize: '20px',
+            padding: '10px'
+          }}> {introductionText} </div>}
           {
             history.map((line, idx)=>{
               return (
                 <div key = {idx} style={{
-                    color: 'white',
+                    color: textColor,
                     padding: '10px'
                 }}>
                   {line}
@@ -33,17 +105,27 @@ export function Console(){
             })
           }
 
+          {executingText && <div style={{
+            color: textColor,
+            fontSize: '20px',
+            padding: '10px'
+          }}>{executingText}</div>}
           <div className='consoleBody'>
             <span style={{
-                color: 'white'
-            }}> {'>'}</span>
+                color: textColor
+            }}> {'> '}</span>
             <input value={input} onChange = {(e)=>{setInput(e.target.value)}}
+              disabled = {executing || introducing}
              onKeyDown={handleOnKeyDown} style={{
-                color: 'white',
+                color: textColor,
                 backgroundColor: 'transparent',
                 width: '90vw',
                 border: 'none',
-                outline: 'none'
+                outline: 'none',
+                fontFamily: 'VT323',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '20px'
             }} />
           </div>
     

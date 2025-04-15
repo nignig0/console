@@ -1,6 +1,12 @@
 .console {
   height: 100vh;
   overflow-y: auto;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  white-space: pre-line;
+  transition: background-color 4s ease-in;
 }
 
 body{
@@ -11,3 +17,4 @@ body{
 .consoleBody{
   padding: 10px
 }
+
