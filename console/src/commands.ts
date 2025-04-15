@@ -39,8 +39,7 @@ commands.set("npm install siri", {
     DOWNLOADING IMPRESSIVE MOBILE DEV SKILLS: [####################]\n
     DOWNLOADING A LOVE FOR DUBAI: [####################]\n
     DOWNLOADING A LOVE FOR ENTREPRENEURSHIP: [####################]\n
-    DONE\n
-    
+    DONE
     `
 })
 
